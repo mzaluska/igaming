@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+
+<h2>Your balance:</h2>
+<div class="row">
+    <div class="col-md-4">
+    {% for wallet in wallets %}
+
+        <p>{{ wallet.get_money_type_display }}: {{ wallet.balance }}</p>
+
+    {% endfor %}
+
+    {% if money_left %}
+        <p>Money left to withdraw: {{ money_left }}</p>
+    {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 play-box">
+        {{ message }}
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="{% url 'player_deposit' %}" class="btn btn-lg btn-warning btn-block">Deposit</a>
+    </div>
+    <div class="col-md-4">
+        <form method="post"
+              action="{% url 'player_home_spin' %}">
+            {% csrf_token %}
+            <button class="btn btn-lg btn-danger btn-block" type="submit">Spin</button>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <input class="btn btn-primary btn-lg btn-block" value="Bet: {{ bet }}" disabled="disabled" />
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Deposit
+{% endblock %}
+
+{% block content %}
+
+<h2>Deposit money</h2>
+
+<form role="form" action="{% url 'player_deposit' %}" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success">Confirm</button>
+</form>
+{% endblock %}
