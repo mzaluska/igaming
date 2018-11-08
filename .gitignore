@@ -1,2 +1,14 @@
-.idea
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# DB
 db.sqlite3
+
+# Extensions
+*.log
+*.pot
+*.pyc
+
+# Directories to ignore
+.idea/
